@@ -1,0 +1,40 @@
+ [
+    {
+        "id":1,
+        "name":"Phone",
+        "price":100,
+        "imgUrl":"/images/phone.jpg"
+    },
+    {
+        "id":2,
+        "name":"Airpods",
+        "price":100,
+        "imgUrl":"/images/airpods.jpg"
+    },
+    {
+        "id":3,
+        "name":"Camera",
+        "price":100,
+        "imgUrl":"/images/camera.jpg"
+    },
+    {
+        "id":4,
+        "name":"Alexa",
+        "price":100,
+        "imgUrl":"/images/alexa.jpg"
+    },
+    {
+        "id":5,
+        "name":"Piano ",
+        "price":100,
+        "imgUrl":"/images/piano-keyboard.jpg"
+    },
+    {
+        "id":6,
+        "name":"Play Station",
+        "price":100,
+        "imgUrl":"/images/playstation.jpg"
+    }
+    
+]
+
