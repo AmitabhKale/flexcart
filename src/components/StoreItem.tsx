@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
+import { useShoppingCart } from "../context/CartContext";
 import { formatCurrency } from "../utilities/formatCurrency";
 
 type StoreItemProps = {
@@ -10,7 +11,13 @@ type StoreItemProps = {
 };
 
 const StoreItem = ({ id, name, price, imgUrl }: StoreItemProps) => {
-  const quantity: number = 1;
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useShoppingCart();
+  const quantity: number = getItemQuantity(id);
   return (
     <Card className="mb-2">
       <Card.Img src={imgUrl} height="300px" style={{ objectFit: "cover" }} />
@@ -21,7 +28,9 @@ const StoreItem = ({ id, name, price, imgUrl }: StoreItemProps) => {
         </Card.Title>
         <div className="mt-auto">
           {quantity === 0 ? (
-            <Button className="w-100 ">+ Add To Cart</Button>
+            <Button className="w-100 " onClick={() => increaseCartQuantity(id)}>
+              + Add To Cart
+            </Button>
           ) : (
             <div
               className="d-flex align-items-center flex-column"
@@ -31,13 +40,23 @@ const StoreItem = ({ id, name, price, imgUrl }: StoreItemProps) => {
                 className="d-flex align-items-center"
                 style={{ gap: ".5rem" }}
               >
-                <Button size="sm">-</Button>
+                <Button onClick={() => decreaseCartQuantity(id)} size="sm">
+                  -
+                </Button>
                 <div className="">
                   <span className="fs-3">{quantity}</span> in cart
                 </div>
-                <Button size="sm">+</Button>
+                <Button onClick={() => increaseCartQuantity(id)} size="sm">
+                  +
+                </Button>
               </div>
-              <Button variant="danger" size="sm">
+              <Button
+                onClick={() => {
+                  removeFromCart(id);
+                }}
+                variant="danger"
+                size="sm"
+              >
                 Remove
               </Button>
             </div>
